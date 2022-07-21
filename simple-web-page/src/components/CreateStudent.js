@@ -1,6 +1,5 @@
-import React, {createRef, useRef, useState} from "react";
+import React from "react";
 import StudentForm from "./StudentForm";
-import {useFormikContext} from 'formik';
 import axios from "axios";
 
 const CreateStudent = () => {
@@ -19,7 +18,7 @@ const CreateStudent = () => {
     return (
         <>
             <React.Fragment>
-                <StudentForm handleOnSubmit={handleOnSubmit} enableReinitialize> Create Student </StudentForm>
+                <StudentForm handleOnSubmit={handleOnSubmit} > Create Student </StudentForm>
             </React.Fragment>
         </>
     )

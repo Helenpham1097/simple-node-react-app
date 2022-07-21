@@ -9,7 +9,10 @@ import CreateStudent from "./CreateStudent";
 import StudentList from "./StudentList";
 import EditStudent from "./EditStudent"
 
+
+
 function NavBarComp() {
+
     return (
         <Router>
             <div>
@@ -60,8 +63,10 @@ function NavBarComp() {
                     <Route path="/student-list" element={ <StudentList/>}>
                     </Route>
 
-                    <Route path="/update/:name" element={ <EditStudent/>}>
+                    <Route path="/update/:name" exact element={ <EditStudent/>}>
                     </Route>
+
+
                 </Routes>
             </div>
         </Router>

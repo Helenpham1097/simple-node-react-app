@@ -23,6 +23,7 @@ const {
 
 // using bodyParser to parse JSON bodies into JS objects
 app.use(express.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
 // enabling CORS for all requests
 app.use(cors());
@@ -44,7 +45,6 @@ app.get('/get/:name', async (req, res) => {
     const document = {
         name: req.params.name
     };
-    console.log(document)
     res.send(await findByName(document));
 });
 
@@ -71,9 +71,10 @@ app.put('/update/:name', async (req, res) => {
     } else {
 
         const dataCheck = {
-            name: req.params.name
+            name: req.params.name,
+
         };
-        const newDocument = {$set: {"name": req.body.name}};
+        const newDocument = {$set: {"name": req.body.name, "email": req.body.email, "studentID": req.body.studentID}};
 
         const foundData = findByName(dataCheck);
         console.log("Get found data pending");

@@ -1,5 +1,5 @@
 # Description
-This is an student management application
+This is a student management application
 
 ## Technologies:
 - React

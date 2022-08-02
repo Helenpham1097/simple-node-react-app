@@ -29,13 +29,12 @@ const EditStudent = (props) => {
     const handleOnSubmit = (studentObject) => {
         axios.put('http://localhost:4000/update/' + name, studentObject)
             .then((res) => {
-                window.alert(res.status)
                 if (res.status === 200) {
                     props.history.push("/student-list");
                     alert("Student successfully updated");
                 }
             })
-            .catch((err) => alert("Something went wrong"));
+            .catch(err => alert("Something went wrong"));
     }
 
     return (

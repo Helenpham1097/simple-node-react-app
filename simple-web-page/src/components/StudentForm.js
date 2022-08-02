@@ -6,7 +6,6 @@ import {FormGroup, FormControl, Button, FormLabel} from "react-bootstrap";
 
 const StudentForm = (props) => {
 
-
     const formik = useFormik({
         enableReinitialize: true,
         initialValues: {
@@ -15,13 +14,10 @@ const StudentForm = (props) => {
             studentID: props.initialValues ? props.initialValues.studentID : ''
         },
 
-
         onSubmit: (values) => {
             console.log(JSON.stringify(values, null, 2));
             props.handleOnSubmit(values);
         },
-
-
     });
 
     const validationSchema = Yup.object().shape({

@@ -1,37 +1,20 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-// const morgan = require('morgan');
-
-// defining the Express app
 const app = express();
 
-const {connectToServer} = require('/Users/phamtrang/Downloads/simple-web-page/server/dbConnection/conn.js');
+const {connectToServer} = require('/Users/phamtrang/Downloads/simple-node-react-app/simple-node-react-app/simple-web-page/server/dbConnection/conn.js');
 const {
     createStudent,
     getStudents,
     findByName,
     update,
     deleteDocument
-} = require('/Users/phamtrang/Downloads/simple-web-page/server/dbConnection/inventory.js');
-// const {getStudents} = require("./dbConnection/inventory");
+} = require('/Users/phamtrang/Downloads/simple-node-react-app/simple-node-react-app/simple-web-page/server/dbConnection/studentService.js');
 
-
-// defining an array to work as the database (temporary solution)
-// adding Helmet to enhance your API's security
-// app.use(helmet());
-
-// using bodyParser to parse JSON bodies into JS objects
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-
-// enabling CORS for all requests
 app.use(cors());
-
-// adding morgan to log HTTP requests
-// app.use(morgan('combined'));
-
-// starting the server
 app.listen(4000, () => {
     console.log('listening on port 4000');
 });

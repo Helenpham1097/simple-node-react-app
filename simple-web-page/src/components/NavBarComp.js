@@ -7,11 +7,14 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import {BrowserRouter as Router, Route, Routes, Link} from "react-router-dom";
 import CreateStudent from "./CreateStudent";
 import StudentList from "./StudentList";
-import EditStudent from "./EditStudent"
-
+import EditStudent from "./EditStudent";
+import SearchStudent from "./SearchStudent";
+import React, {useState} from "react";
 
 
 function NavBarComp() {
+
+    const [searchValue, setValue ] = useState(()=>"");
 
     return (
         <Router>
@@ -42,15 +45,24 @@ function NavBarComp() {
                                     Link
                                 </Nav.Link>
                             </Nav>
-                            <Form className="d-flex">
-                                <Form.Control
-                                    type="search"
-                                    placeholder="Search"
-                                    className="me-2"
-                                    aria-label="Search"
-                                />
-                                <Button variant="outline-success">Search</Button>
-                            </Form>
+                            {/*<Nav.Link as={Link} to={"/search/:name"}>*/}
+                                <Form className="d-flex" >
+                                    <Form.Control
+                                        type="search"
+                                        placeholder="Search"
+                                        className="me-2"
+                                        aria-label="Search"
+                                        value={searchValue}
+                                        onChange={e => setValue(e.target.value )}
+                                    />
+                                    {/*<Button variant="outline-success" type="submit"*/}
+                                    {/*        class="btn btn-success">Search</Button>*/}
+                                    <Link className="search-student"
+                                          to={"/search/" + searchValue}>
+                                        Search
+                                    </Link>
+                                </Form>
+                            {/*</Nav.Link>*/}
                         </Navbar.Collapse>
                     </Container>
                 </Navbar>
@@ -60,13 +72,14 @@ function NavBarComp() {
                     <Route path="/create-student" element={<CreateStudent/>}>
                     </Route>
 
-                    <Route path="/student-list" element={ <StudentList/>}>
+                    <Route path="/student-list" element={<StudentList/>}>
                     </Route>
 
-                    <Route path="/update/:name" exact element={ <EditStudent/>}>
+                    <Route path="/update/:name" exact element={<EditStudent/>}>
                     </Route>
 
-
+                    <Route path="/search/:name" element={<SearchStudent/>}>
+                    </Route>
                 </Routes>
             </div>
         </Router>
